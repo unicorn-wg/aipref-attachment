@@ -115,33 +115,23 @@ about how that content is used with the Content-Usage header field
 as follows:
 
 
-```http-message
+~~~http-message
 200 OK
 Date: Wed, 23 Apr 2025 04:48:02 GMT
 Content-Type: text/plain
 Content-Usage: ai=n
 
 This is some content.
-```
+~~~
 
 Alternatively, or additionally,
 a server might include the same directive in its "robots.txt" file:
 
-```
+~~~
 User-Agent: *
 Content-Usage: ai=n
 Allow: /
-Disallow: /ai-ok/
-
-User-Agent: *
-Content-Usage: ai=y
-Allow: /ai-ok/
-Disallow: /
-
-User-Agent: my-bestie
-Content-Usage: ai=y
-Allow: /
-```
+~~~
 
 
 ## Embedded Preferences
