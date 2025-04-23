@@ -115,33 +115,23 @@ about how that content is used with the Content-Usage header field
 as follows:
 
 
-```http-message
+~~~http-message
 200 OK
 Date: Wed, 23 Apr 2025 04:48:02 GMT
 Content-Type: text/plain
 Content-Usage: ai=n
 
 This is some content.
-```
+~~~
 
 Alternatively, or additionally,
 a server might include the same directive in its "robots.txt" file:
 
-```
+~~~
 User-Agent: *
 Content-Usage: ai=n
 Allow: /
-Disallow: /ai-ok/
-
-User-Agent: *
-Content-Usage: ai=y
-Allow: /ai-ok/
-Disallow: /
-
-User-Agent: my-bestie
-Content-Usage: ai=y
-Allow: /
-```
+~~~
 
 
 ## Embedded Preferences
@@ -207,6 +197,101 @@ The Content-Usage field does not have any special effect on caching.
 
 
 # Robots Exclusion Protocol Content-Usage Directive {#robots}
+
+A Content-Usage directive is added to the Group definition
+in the Robots Exclusion Protocol format {{ROBOTS}}.
+
+That is, the ABNF is extended as follows:
+
+~~~abnf
+group = startgroupline *(startgroupline / emptyline)
+        [content-usage] ; <-- NEW
+        *(rule / emptyline)
+
+content-usage = *WS "content-usage" *WS ":" *WS usage-pref
+usage-pref    = <usage preference vocabulary; see [VOCAB]>
+~~~
+
+This directive updates the definition of a group to be more expansive.
+Where a group was previously a set of user-agents
+(either "*" or a set of one or more identifiers),
+a Group is updated to include zero or one Content-Usage preferences.
+
+## Processing Multiple Groups
+
+The effect of this change is that
+a crawler might need to consider multiple groups.
+A crawler needs to consider this both to decide
+whether content can be requested
+and to determine what preferences apply to content.
+
+Rather than looking for a group based on a specific identifier,
+such as "ExampleBot",
+then falling back to the wildcard group ("*"),
+a crawler might have multiple groups,
+each with a different set of preferences.
+
+Where there are multiple groups,
+a crawler first looks for groups with a matching identifer.
+If any groups match the crawler identity
+(as defined in {{Section 2.2.1 of ROBOTS}}),
+all matching groups are used.
+If there are no matching groups,
+all groups that include a User-Agent of "*" are used.
+
+In determining which group applies for a given resource,
+the crawler evaluates each group in turn.
+Any group for which the resource is disallowed
+(as defined in {{Section 2.2.2 of ROBOTS}})
+is excluded.
+If all groups are excluded in this way,
+the resource is not crawled.
+
+If any group allows the crawling of the resource,
+content can be obtained.
+Any usage preferences
+from the Content-Usage directive
+in the group that has the longest Allow rule match,
+applies to the content that is obtained.
+
+For example, given the following "robots.txt" document:
+
+~~~
+User-Agent: *
+Content-Usage: ai=n
+Allow: /
+Disallow: /never/
+
+User-Agent: *
+Content-Usage: ai=y
+Allow: /ai-ok/
+Disallow: /
+
+User-Agent: ExampleBot
+Content-Usage: ai=y
+Allow: /
+~~~
+
+A crawler that identifies as "ExampleBot"
+would be able to obtain all content
+and apply preferences of "ai=y"
+(processed as defined in {{VOCAB}}).
+
+All other crawlers would use the same two groups.
+The first group allows the retrieval of most resources,
+excluding resources starting with "/never/",
+and applies a usage preference of "ai=n" across those resources.
+The second group creates a specific rule
+for resources under "/ai-ok",
+where the usage preference is "ai=y".
+This might result in the following outcome after crawling:
+
+
+| Path           | Allowed | Saved Preference |
+|:---------------|-:-------|-:----------------|
+| /test          |  yes    | ai=n             |
+| /never/test    |  no     | n/a              |
+| /ai-ok/test    |  yes    | ai=y             |
 
 
 # Security Considerations
