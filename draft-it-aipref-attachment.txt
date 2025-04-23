@@ -2,10 +2,10 @@
 
 
 
-WG Working Group                                              Y. N. Here
-Internet-Draft                                                   Mozilla
-Intended status: Standards Track                               G. Illyes
-Expires: 25 October 2025                                          Google
+WG Working Group                                               G. Illyes
+Internet-Draft                                                    Google
+Intended status: Standards Track                              Y. N. Here
+Expires: 25 October 2025                                         Mozilla
                                                            23 April 2025
 
 
@@ -110,11 +110,11 @@ Acknowledgments
 
 Authors' Addresses
 
-   Your Name Here
-   Mozilla
-   Email: your.email@example.com
-
-
    Gary Illyes
    Google
    Email: garyillyes@google.com
+
+
+   Your Name Here
+   Mozilla
+   Email: your.email@example.com
