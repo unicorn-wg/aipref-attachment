@@ -3,12 +3,13 @@
 
 
 WG Working Group                                              Y. N. Here
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                             23 April 2025
-Expires: 25 October 2025
+Internet-Draft                                                   Mozilla
+Intended status: Standards Track                               G. Illyes
+Expires: 25 October 2025                                          Google
+                                                           23 April 2025
 
 
-                           TODO - Your title
+             Indicating Preferences Regarding Content Usage
                   draft-todo-yourname-protocol-latest
 
 Abstract
@@ -70,7 +71,7 @@ Table of Contents
    4.  IANA Considerations
    5.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -107,8 +108,13 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Your Name Here
-   Your Organization Here
+   Mozilla
    Email: your.email@example.com
+
+
+   Gary Illyes
+   Google
+   Email: garyillyes@google.com
