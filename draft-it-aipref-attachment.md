@@ -4,20 +4,19 @@ abbrev: "Content Usage Preferences"
 category: std
 
 docname: draft-it-aipref-attachment-latest
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+submissiontype: IETF
 number:
+updates: 9309
 date:
 consensus: true
 v: 3
-area: ""
+area: WIT
 workgroup: "AI Preferences"
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - skynet training wheel
 venue:
   group: "AI Preferences"
-  type: ""
+  type: "Working Group"
   mail: "ai-control@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/ai-control/"
   github: "unicorn-wg/aipref-attachment"
@@ -29,18 +28,33 @@ author:
     organization: Google
     email: garyillyes@google.com
  -
-    fullname: "Martin Thomson"
+    fullname: Martin Thomson
     organization: Mozilla
-    email: "mt@lowentropy.net"
+    email: mt@lowentropy.net
 
 normative:
+  VOCAB: # TODO update after adoption
+    title: "Title of Vocabulary Draft"
+    date: 2025-04
+    seriesinfo:
+      Internet-Draft: draft-keller-aipref-vocab-01
+    author:
+      -
+        fullname: Paul Keller
 
 informative:
 
 
 --- abstract
 
-TODO Abstract
+Content creators and other stakeholders might wish to signal
+their preferences about how their content
+might be consumed by automated systems.
+This document defines how preferences can be signaled
+as part of the acquisition of content in HTTP.
+
+This document updates RFC 9309
+to allow for the inclusion of usage preferences.
 
 
 --- middle
