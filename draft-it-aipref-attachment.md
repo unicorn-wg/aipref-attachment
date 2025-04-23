@@ -45,13 +45,13 @@ venue:
 
 author:
  -
-    fullname: Your Name Here
-    organization: Mozilla
-    email: your.email@example.com
- -
     fullname: Gary Illyes
     organization: Google
     email: garyillyes@google.com
+ -
+    fullname: Your Name Here
+    organization: Mozilla
+    email: your.email@example.com
 
 normative:
 
