@@ -9,19 +9,19 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: ""
+workgroup: "AI Preferences"
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "AI Preferences"
+  type: ""
+  mail: "ai-control@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/ai-control/"
+  github: "unicorn-wg/aipref-attachment"
+  latest: "https://unicorn-wg.github.io/aipref-attachment/draft-it-aipref-attachment.html"
 
 author:
  -
