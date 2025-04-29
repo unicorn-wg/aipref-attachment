@@ -6,7 +6,7 @@ AI Preferences                                                 G. Illyes
 Internet-Draft                                                    Google
 Updates: 9309 (if approved)                                   M. Thomson
 Intended status: Standards Track                                 Mozilla
-Expires: 25 October 2025                                   23 April 2025
+Expires: 31 October 2025                                   29 April 2025
 
 
              Indicating Preferences Regarding Content Usage
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 October 2025.
+   This Internet-Draft will expire on 31 October 2025.
 
 Copyright Notice
 
@@ -273,11 +273,11 @@ Table of Contents
                +=============+=========+==================+
                | Path        | Allowed | Saved Preference |
                +=============+=========+==================+
-               | /test       |     yes | ai=n             |
+               | /test       |   yes   | ai=n             |
                +-------------+---------+------------------+
-               | /never/test |      no | n/a              |
+               | /never/test |    no   | n/a              |
                +-------------+---------+------------------+
-               | /ai-ok/test |     yes | ai=y             |
+               | /ai-ok/test |   yes   | ai=y             |
                +-------------+---------+------------------+
 
                                  Table 1
