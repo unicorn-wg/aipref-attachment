@@ -288,7 +288,7 @@ This might result in the following outcome after crawling:
 
 
 | Path           | Allowed | Saved Preference |
-|:---------------|-:-------|-:----------------|
+|:---------------|:-------:|:-----------------|
 | /test          |  yes    | ai=n             |
 | /never/test    |  no     | n/a              |
 | /ai-ok/test    |  yes    | ai=y             |
