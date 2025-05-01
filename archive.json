@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-29T01:03:57.235347+00:00",
+  "timestamp": "2025-05-01T01:10:22.686328+00:00",
   "repo": "unicorn-wg/aipref-attachment",
   "labels": [
     {
@@ -63,13 +63,13 @@
       "labels": [],
       "body": "I've attempted to resolve the multiple groups thing here.\r\n\r\n@garyillyes, does this more or less match what you think you would do?",
       "createdAt": "2025-04-23T05:47:18Z",
-      "updatedAt": "2025-04-23T05:48:52Z",
+      "updatedAt": "2025-04-29T22:01:27Z",
       "baseRepository": "unicorn-wg/aipref-attachment",
       "baseRefName": "main",
       "baseRefOid": "08259610e1eeb5e61e72f77bddd3ddb5adacdb08",
       "headRepository": "unicorn-wg/aipref-attachment",
       "headRefName": "robots",
-      "headRefOid": "97838bc35aa628bf68f95e49ef5819a635831d98",
+      "headRefOid": "7bb84fb11a3ef76a11c8905c5af6cfab2d348749",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
