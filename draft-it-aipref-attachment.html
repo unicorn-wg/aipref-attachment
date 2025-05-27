@@ -27,7 +27,7 @@ to allow for the inclusion of usage preferences.
     intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 5.3.0
-    platformdirs 4.3.7
+    platformdirs 4.3.8
     pycountry 24.6.1
     PyYAML 6.0.2
     requests 2.32.3
@@ -1051,11 +1051,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Content Usage Preferences</td>
-<td class="right">April 2025</td>
+<td class="right">May 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Illyes &amp; Thomson</td>
-<td class="center">Expires 25 October 2025</td>
+<td class="center">Expires 28 November 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1071,12 +1071,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc9309" class="eref">9309</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-04-23" class="published">23 April 2025</time>
+<time datetime="2025-05-27" class="published">27 May 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-10-25">25 October 2025</time></dd>
+<dd class="expires"><time datetime="2025-11-28">28 November 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1136,7 +1136,7 @@ to allow for the inclusion of usage preferences.<a href="#section-abstract-2" cl
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 October 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1187,6 +1187,11 @@ to allow for the inclusion of usage preferences.<a href="#section-abstract-2" cl
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-robots-exclusion-protocol-c" class="internal xref">Robots Exclusion Protocol Content-Usage Directive</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-processing-multiple-groups" class="internal xref">Processing Multiple Groups</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
@@ -1367,7 +1372,118 @@ will not comply with this requirement.<a href="#section-2-3" class="pilcrow">¶<
 <section id="section-3">
       <h2 id="name-robots-exclusion-protocol-c">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-robots-exclusion-protocol-c" class="section-name selfRef">Robots Exclusion Protocol Content-Usage Directive</a>
-    </h2>
+      </h2>
+<p id="section-3-1">A Content-Usage directive is added to the Group definition
+in the Robots Exclusion Protocol format <span>[<a href="#ROBOTS" class="cite xref">ROBOTS</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">That is, the ABNF is extended as follows:<a href="#section-3-2" class="pilcrow">¶</a></p>
+<div class="lang-abnf sourcecode" id="section-3-3">
+<pre>
+group = startgroupline *(startgroupline / emptyline)
+        [content-usage] ; &lt;-- NEW
+        *(rule / emptyline)
+
+content-usage = *WS "content-usage" *WS ":" *WS usage-pref
+usage-pref    = &lt;usage preference vocabulary; see [VOCAB]&gt;
+</pre><a href="#section-3-3" class="pilcrow">¶</a>
+</div>
+<p id="section-3-4">This directive updates the definition of a group to be more expansive.
+Where a group was previously a set of user-agents
+(either "*" or a set of one or more identifiers),
+a Group is updated to include zero or one Content-Usage preferences.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<div id="processing-multiple-groups">
+<section id="section-3.1">
+        <h3 id="name-processing-multiple-groups">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-processing-multiple-groups" class="section-name selfRef">Processing Multiple Groups</a>
+        </h3>
+<p id="section-3.1-1">The effect of this change is that
+a crawler might need to consider multiple groups.
+A crawler needs to consider this both to decide
+whether content can be requested
+and to determine what preferences apply to content.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">Rather than looking for a group based on a specific identifier,
+such as "ExampleBot",
+then falling back to the wildcard group ("*"),
+a crawler might have multiple groups,
+each with a different set of preferences.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1-3">Where there are multiple groups,
+a crawler first looks for groups with a matching identifer.
+If any groups match the crawler identity
+(as defined in <span><a href="https://rfc-editor.org/rfc/rfc9309#section-2.2.1" class="relref">Section 2.2.1</a> of [<a href="#ROBOTS" class="cite xref">ROBOTS</a>]</span>),
+all matching groups are used.
+If there are no matching groups,
+all groups that include a User-Agent of "*" are used.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">In determining which group applies for a given resource,
+the crawler evaluates each group in turn.
+Any group for which the resource is disallowed
+(as defined in <span><a href="https://rfc-editor.org/rfc/rfc9309#section-2.2.2" class="relref">Section 2.2.2</a> of [<a href="#ROBOTS" class="cite xref">ROBOTS</a>]</span>)
+is excluded.
+If all groups are excluded in this way,
+the resource is not crawled.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1-5">If any group allows the crawling of the resource,
+content can be obtained.
+Any usage preferences
+from the Content-Usage directive
+in the group that has the longest Allow rule match,
+applies to the content that is obtained.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1-6">For example, given the following "robots.txt" document:<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.1-7">
+<pre>
+User-Agent: *
+Content-Usage: ai=n
+Allow: /
+Disallow: /never/
+
+User-Agent: *
+Content-Usage: ai=y
+Allow: /ai-ok/
+Disallow: /
+
+User-Agent: ExampleBot
+Content-Usage: ai=y
+Allow: /
+</pre><a href="#section-3.1-7" class="pilcrow">¶</a>
+</div>
+<p id="section-3.1-8">A crawler that identifies as "ExampleBot"
+would be able to obtain all content
+and apply preferences of "ai=y"
+(processed as defined in <span>[<a href="#VOCAB" class="cite xref">VOCAB</a>]</span>).<a href="#section-3.1-8" class="pilcrow">¶</a></p>
+<p id="section-3.1-9">All other crawlers would use the same two groups.
+The first group allows the retrieval of most resources,
+excluding resources starting with "/never/",
+and applies a usage preference of "ai=n" across those resources.
+The second group creates a specific rule
+for resources under "/ai-ok",
+where the usage preference is "ai=y".
+This might result in the following outcome after crawling:<a href="#section-3.1-9" class="pilcrow">¶</a></p>
+<table class="center" id="table-1">
+          <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Path</th>
+              <th class="text-center" rowspan="1" colspan="1">Allowed</th>
+              <th class="text-left" rowspan="1" colspan="1">Saved Preference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">/test</td>
+              <td class="text-center" rowspan="1" colspan="1">yes</td>
+              <td class="text-left" rowspan="1" colspan="1">ai=n</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">/never/test</td>
+              <td class="text-center" rowspan="1" colspan="1">no</td>
+              <td class="text-left" rowspan="1" colspan="1">n/a</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">/ai-ok/test</td>
+              <td class="text-center" rowspan="1" colspan="1">yes</td>
+              <td class="text-left" rowspan="1" colspan="1">ai=y</td>
+            </tr>
+          </tbody>
+        </table>
+</section>
+</div>
 </section>
 </div>
 <div id="security-considerations">
