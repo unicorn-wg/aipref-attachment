@@ -225,19 +225,19 @@ A crawler needs to consider this both to decide
 whether content can be requested
 and to determine what preferences apply to content.
 
-Rather than looking for a group based on a specific identifier,
+Rather than looking for a group based on a specific User-Agent identifier,
 such as "ExampleBot",
 then falling back to the wildcard group ("*"),
 a crawler might have multiple groups,
 each with a different set of preferences.
 
 Where there are multiple groups,
-a crawler first looks for groups with a matching identifer.
+a crawler first looks for groups with a matching User-Agent identifer.
 If any groups match the crawler identity
 (as defined in {{Section 2.2.1 of ROBOTS}}),
-all matching groups are used.
+all matching groups are considered.
 If there are no matching groups,
-all groups that include a User-Agent of "*" are used.
+all groups that include a User-Agent of "*" are considered.
 
 In determining which group applies for a given resource,
 the crawler evaluates each group in turn.
@@ -248,11 +248,11 @@ If all groups are excluded in this way,
 the resource is not crawled.
 
 If any group allows the crawling of the resource,
-content can be obtained.
-Any usage preferences
-from the Content-Usage directive
-in the group that has the longest Allow rule match,
-applies to the content that is obtained.
+content can be retrieved.
+If multiple groups allow crawling,
+the usage preference from the group
+with the longest Allow rule match
+applies to that content.
 
 For example, given the following "robots.txt" document:
 
