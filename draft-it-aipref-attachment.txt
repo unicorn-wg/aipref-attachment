@@ -6,7 +6,7 @@ AI Preferences                                                 G. Illyes
 Internet-Draft                                                    Google
 Updates: 9309 (if approved)                                   M. Thomson
 Intended status: Standards Track                                 Mozilla
-Expires: 28 November 2025                                    27 May 2025
+Expires: 29 November 2025                                    28 May 2025
 
 
              Indicating Preferences Regarding Content Usage
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 November 2025.
+   This Internet-Draft will expire on 29 November 2025.
 
 Copyright Notice
 
@@ -315,10 +315,11 @@ Table of Contents
               DOI 10.17487/RFC9309, September 2022,
               <https://www.rfc-editor.org/rfc/rfc9309>.
 
-   [VOCAB]    Keller, P., "Title of Vocabulary Draft", Work in Progress,
-              Internet-Draft, draft-keller-aipref-vocab-01, April 2025,
-              <https://datatracker.ietf.org/doc/html/draft-keller-
-              aipref-vocab-01>.
+   [VOCAB]    Keller, P. and M. Thomson, "Proposal for an Opt-Out
+              Vocabulary", Work in Progress, Internet-Draft, draft-ietf-
+              aipref-vocab-00, 30 April 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-aipref-
+              vocab-00>.
 
 Acknowledgments
 
