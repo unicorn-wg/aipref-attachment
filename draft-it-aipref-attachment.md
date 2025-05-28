@@ -36,14 +36,7 @@ normative:
   FIELDS: RFC9651
   HTTP: RFC9110
   ROBOTS: RFC9309
-  VOCAB: # TODO update after adoption
-    title: "Title of Vocabulary Draft"
-    date: 2025-04
-    seriesinfo:
-      Internet-Draft: draft-keller-aipref-vocab-01
-    author:
-      -
-        fullname: Paul Keller
+  VOCAB: I-D.ietf-aipref-vocab
 
 informative:
 
