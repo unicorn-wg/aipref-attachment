@@ -289,7 +289,9 @@ This might result in the following outcome after crawling:
 
 # Security Considerations
 
-TODO Security
+To protect against attacks against their system, implementors of aipref parsing
+and matching logic should take the following considerations into account: memory
+management, invalid characters and parsing untrusted content.
 
 
 # IANA Considerations
