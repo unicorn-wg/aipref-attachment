@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-05T01:06:54.495949+00:00",
+  "timestamp": "2025-06-08T01:13:46.903703+00:00",
   "repo": "unicorn-wg/aipref-attachment",
   "labels": [
     {
@@ -95,6 +95,53 @@
               "body": "I'm happy to defer this part for later, but I was on a roll, so I added it.",
               "createdAt": "2025-04-23T05:48:52Z",
               "updatedAt": "2025-04-23T05:48:52Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOOeI0gs6ZIrOU",
+      "title": "initial security considerations section.",
+      "url": "https://github.com/unicorn-wg/aipref-attachment/pull/2",
+      "state": "OPEN",
+      "author": "loganaden",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-05T05:49:05Z",
+      "updatedAt": "2025-06-05T06:25:37Z",
+      "baseRepository": "unicorn-wg/aipref-attachment",
+      "baseRefName": "main",
+      "baseRefOid": "90675b67a25e7d2213080c5602fd990f65b1db23",
+      "headRepository": "cyberstormdotmu/aipref-attachment",
+      "headRefName": "loganaden-aipref-seccon",
+      "headRefOid": "e41cbef9d41d340ee19d84df4866c3cf4ca41487",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOOeI0gs6sy4Ve",
+          "commit": {
+            "abbreviatedOid": "e41cbef"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-05T06:25:36Z",
+          "updatedAt": "2025-06-05T06:25:37Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "This is helpful, but I think that you can refer to the security considerations of RFC 9651 for most of this.  We might also want to specifically allow for a smaller limit than RFC 9651 requires for various things.  If we think that the grammar is likely to be small, having a dictionary with 1024 key/value pairs might be excessive, just as tokens of 512 bytes are higher than the ONE we admit (for values).  256 parameters might be easy if they are going to be ignored, but that's still an awful lot.",
+              "createdAt": "2025-06-05T06:25:37Z",
+              "updatedAt": "2025-06-05T06:25:37Z"
             }
           ]
         }
